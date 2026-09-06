@@ -3,529 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>RanzTopup - Top Up Game</title>
-
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#070b16;
-    color:white;
-    min-height:100vh;
-}
-
-/* HEADER */
-header{
-    position:sticky;
-    top:0;
-    z-index:10;
-    background:rgba(7,11,22,.92);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid #1e293b;
-}
-
-.nav{
-    max-width:1100px;
-    margin:auto;
-    padding:18px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-}
-
-.logo{
-    font-size:25px;
-    font-weight:900;
-    color:#38bdf8;
-}
-
-.logo span{
-    color:white;
-}
-
-.status{
-    font-size:12px;
-    color:#86efac;
-    background:#0f2a1b;
-    padding:8px 12px;
-    border-radius:20px;
-}
-
-/* HERO */
-.hero{
-    max-width:1100px;
-    margin:auto;
-    padding:60px 20px 35px;
-    text-align:center;
-}
-
-.badge{
-    display:inline-block;
-    background:#0c2535;
-    color:#38bdf8;
-    padding:8px 15px;
-    border-radius:30px;
-    font-size:13px;
-    margin-bottom:18px;
-}
-
-.hero h1{
-    font-size:clamp(32px,7vw,58px);
-    line-height:1.05;
-    margin-bottom:15px;
-}
-
-.hero h1 span{
-    color:#38bdf8;
-}
-
-.hero p{
-    color:#94a3b8;
-    max-width:600px;
-    margin:auto;
-    line-height:1.6;
-}
-
-.hero-button{
-    display:inline-block;
-    margin-top:25px;
-    padding:14px 25px;
-    background:#22c55e;
-    color:white;
-    text-decoration:none;
-    border-radius:12px;
-    font-weight:bold;
-    box-shadow:0 8px 25px rgba(34,197,94,.2);
-}
-
-/* GAME SECTION */
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:20px;
-}
-
-.section-title{
-    text-align:center;
-    margin:20px 0 25px;
-}
-
-.section-title h2{
-    font-size:28px;
-}
-
-.section-title p{
-    color:#64748b;
-    margin-top:7px;
-}
-
-/* CARDS */
-.games{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-}
-
-.game{
-    position:relative;
-    overflow:hidden;
-    background:linear-gradient(145deg,#111827,#0f172a);
-    border:1px solid #1e293b;
-    border-radius:20px;
-    padding:25px;
-    transition:.3s;
-}
-
-.game:hover{
-    transform:translateY(-6px);
-    border-color:#38bdf8;
-    box-shadow:0 15px 35px rgba(0,0,0,.35);
-}
-
-.game-icon{
-    width:65px;
-    height:65px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:18px;
-    background:#1e293b;
-    font-size:34px;
-    margin-bottom:18px;
-}
-
-.game h3{
-    font-size:22px;
-    margin-bottom:8px;
-}
-
-.game-desc{
-    color:#94a3b8;
-    font-size:14px;
-    margin-bottom:18px;
-}
-
-.products{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-bottom:20px;
-}
-
-.tag{
-    background:#172033;
-    border:1px solid #263449;
-    color:#cbd5e1;
-    padding:7px 10px;
-    border-radius:8px;
-    font-size:12px;
-}
-
-.button{
-    display:block;
-    text-align:center;
-    text-decoration:none;
-    color:white;
-    background:#2563eb;
-    padding:13px;
-    border-radius:11px;
-    font-weight:bold;
-    transition:.2s;
-}
-
-.button:hover{
-    background:#1d4ed8;
-}
-
-.ml .button{
-    background:#38bdf8;
-    color:#06111c;
-}
-
-.ml .button:hover{
-    background:#0ea5e9;
-}
-
-/* FEATURES */
-.features{
-    margin-top:45px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:15px;
-}
-
-.feature{
-    background:#0f172a;
-    border:1px solid #1e293b;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-}
-
-.feature-icon{
-    font-size:28px;
-    margin-bottom:10px;
-}
-
-.feature h4{
-    margin-bottom:7px;
-}
-
-.feature p{
-    color:#64748b;
-    font-size:13px;
-    line-height:1.5;
-}
-
-/* FOOTER */
-footer{
-    margin-top:55px;
-    background:#050811;
-    border-top:1px solid #1e293b;
-    padding:30px 20px;
-    text-align:center;
-    color:#64748b;
-    font-size:13px;
-}
-
-.footer-logo{
-    color:#38bdf8;
-    font-size:20px;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-@media(max-width:500px){
-
-    .nav{
-        padding:15px;
-    }
-
-    .logo{
-        font-size:21px;
-    }
-
-    .status{
-        font-size:10px;
-    }
-
-    .hero{
-        padding-top:45px;
-    }
-
-    .game{
-        padding:20px;
-    }
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:radial-gradient(circle at 50% -10%,#123b72 0%,#050b17 42%,#02040a 100%);color:#fff;min-height:100vh}
+header{position:sticky;top:0;z-index:1000;background:rgba(2,7,18,.94);backdrop-filter:blur(15px);border-bottom:1px solid rgba(0,174,255,.2)}
+.navbar{max-width:1180px;margin:auto;height:76px;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:29px;font-weight:900;font-style:italic;letter-spacing:-1px}.logo span{color:#16b9ff}.logo small{display:block;font-size:8px;letter-spacing:2px;color:#b7c5d8;margin-top:2px}
+.menu{display:flex;gap:28px}.menu a{color:#b8c8dc;text-decoration:none;font-size:14px;font-weight:bold}.menu a:hover,.menu a.active{color:#18bfff}
+.online{border:1px solid #16d987;color:#48ee9e;background:rgba(16,185,129,.12);padding:8px 14px;border-radius:30px;font-size:12px;font-weight:bold}
+.hero{max-width:1180px;margin:auto;min-height:390px;padding:55px 25px;display:flex;align-items:center;position:relative;overflow:hidden}
+.hero-content{width:48%;position:relative;z-index:2}.badge{display:inline-block;padding:9px 17px;border:1px solid #08c9ff;border-radius:30px;color:#bcefff;background:rgba(0,174,255,.1);font-size:12px;font-weight:bold;margin-bottom:20px}
+.hero h1{font-size:clamp(38px,5vw,62px);line-height:.98;font-weight:900}.hero h1 span{color:#0dc4ff;text-shadow:0 0 25px rgba(0,195,255,.45)}
+.hero p{color:#aebdd0;line-height:1.6;margin:20px 0;max-width:430px}.hero-button{display:inline-block;padding:14px 23px;border-radius:30px;background:linear-gradient(135deg,#05b9ff,#2164ff);color:white;text-decoration:none;font-weight:bold;box-shadow:0 0 25px rgba(0,153,255,.35)}
+.hero-games{position:absolute;right:-20px;top:25px;width:57%;height:350px}.hero-character{position:absolute;width:32%;height:280px;border-radius:25px;background-size:cover;background-position:center;box-shadow:0 0 40px rgba(0,150,255,.25)}
+.hero-ml{left:5%;background:linear-gradient(135deg,#082c64,#18aee8)}.hero-ff{left:35%;background:linear-gradient(135deg,#ff5c00,#4b0c00)}.hero-pubg{right:3%;background:linear-gradient(135deg,#4c8fc2,#101d2e)}
+.games-section{max-width:1180px;margin:auto;padding:15px 20px 45px}.games{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.game-card{background:rgba(5,17,38,.88);border:1px solid rgba(0,174,255,.5);border-radius:22px;overflow:hidden;box-shadow:0 0 25px rgba(0,113,255,.12);transition:.3s}.game-card:hover{transform:translateY(-7px);box-shadow:0 15px 45px rgba(0,135,255,.22)}
+.game-image{height:205px;overflow:hidden;background:#091326}.game-image img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}.game-card:hover .game-image img{transform:scale(1.06)}
+.card-content{padding:18px}.card-content h2{font-size:22px;margin-bottom:8px}.card-content p{color:#aab9cb;font-size:13px;line-height:1.5;min-height:40px}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:15px 0}.tag{padding:7px 10px;border-radius:20px;background:rgba(0,150,255,.1);border:1px solid rgba(0,170,255,.35);color:#bdeaff;font-size:11px}
+.topup-btn{width:100%;display:block;padding:14px;border-radius:13px;background:linear-gradient(135deg,#078cff,#1658ff);color:#fff;text-align:center;text-decoration:none;font-size:14px;font-weight:bold;transition:.25s}.topup-btn:hover{filter:brightness(1.15);transform:translateY(-2px)}
+.ff-card{border-color:rgba(255,92,0,.55)}.ff-card .topup-btn{background:linear-gradient(135deg,#ff7a00,#ff3d00)}
+.pubg-card{border-color:rgba(42,143,255,.55)}
+.features{max-width:1180px;margin:0 auto 35px;padding:25px 20px;display:grid;grid-template-columns:repeat(4,1fr);gap:15px;background:rgba(4,15,32,.65);border:1px solid rgba(0,130,255,.25);border-radius:20px}
+.feature{display:flex;align-items:center;gap:13px;padding:10px}.feature-icon{width:52px;height:52px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:50%;border:1px solid #087fff;background:rgba(0,111,255,.1);font-size:23px}.feature h4{font-size:14px;margin-bottom:5px}.feature p{color:#8392a7;font-size:11px}
+footer{text-align:center;padding:25px 15px;border-top:1px solid rgba(255,255,255,.06);color:#68758a;font-size:12px}footer strong{color:#19bfff}
+@media(max-width:850px){.menu{display:none}.navbar{height:65px}.logo{font-size:23px}.hero{min-height:520px;padding-top:35px;display:block}.hero-content{width:100%;text-align:center}.hero p{margin:18px auto}.hero-games{position:absolute;width:100%;left:0;right:0;top:310px;height:180px}.hero-character{height:160px}.games{grid-template-columns:1fr;max-width:500px;margin:auto}.features{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.online{font-size:10px;padding:7px 10px}.hero h1{font-size:40px}.hero{padding-left:15px;padding-right:15px}.games-section{padding-left:15px;padding-right:15px}.features{margin-left:15px;margin-right:15px;padding:15px 10px;gap:5px}.feature{display:block;text-align:center}.feature-icon{margin:auto auto 8px}.feature p{display:none}}
 </style>
 </head>
-
 <body>
+<header><div class="navbar">
+<div class="logo">Ranz<span>Topup</span><small>TOP UP GAME • TERMURAH • TERPERCAYA</small></div>
+<nav class="menu">
+<a href="beranda.html" class="active">Beranda</a>
+<a href="index.html">Mobile Legends</a>
+<a href="free-fire.html">Free Fire</a>
+<a href="pubg-mobile.html">PUBG Mobile</a>
+</nav>
+<div class="online">● ONLINE</div>
+</div></header>
 
-<!-- HEADER -->
-<header>
-    <div class="nav">
-
-        <div class="logo">
-            Ranz<span>Topup</span>
-        </div>
-
-        <div class="status">
-            ● ONLINE
-        </div>
-
-    </div>
-</header>
-
-
-<!-- HERO -->
 <section class="hero">
-
-    <div class="badge">
-        ⚡ TOP UP GAME TERPERCAYA
-    </div>
-
-    <h1>
-        Top Up Game<br>
-        <span>Cepat & Mudah</span>
-    </h1>
-
-    <p>
-        Pilih game favoritmu, pilih produk yang kamu inginkan,
-        lalu lakukan pemesanan dengan mudah.
-    </p>
-
-    <a href="#games" class="hero-button">
-        🎮 Pilih Game
-    </a>
-
+<div class="hero-content">
+<div class="badge">⚡ TOP UP GAME TERPERCAYA</div>
+<h1>Top Up Game<br><span>Cepat &amp; Mudah</span></h1>
+<p>Pilih game favoritmu, pilih nominal top up, lalu lakukan pemesanan dengan mudah di RanzTopup.</p>
+<a href="#games" class="hero-button">🎮 Mulai Top Up Sekarang →</a>
+</div>
+<div class="hero-games">
+<div class="hero-character hero-ml"></div>
+<div class="hero-character hero-ff"></div>
+<div class="hero-character hero-pubg"></div>
+</div>
 </section>
 
-
-<!-- GAME -->
-<div class="container" id="games">
-
-    <div class="section-title">
-        <h2>🎮 Game Pilihan</h2>
-        <p>Pilih game yang ingin kamu top up</p>
-    </div>
-
-
-    <div class="games">
-
-
-        <!-- MOBILE LEGENDS -->
-
-        <div class="game ml">
-
-            <div class="game-icon">
-                💎
-            </div>
-
-            <h3>Mobile Legends</h3>
-
-            <div class="game-desc">
-                Diamond & Weekly Diamond Pass
-            </div>
-
-            <div class="products">
-
-                <div class="tag">💎 Diamond</div>
-                <div class="tag">🎫 WDP 1×</div>
-                <div class="tag">🎫 WDP 2×</div>
-                <div class="tag">🎫 WDP 3×</div>
-
-            </div>
-
-            <a
-            class="button"
-            href="https://raarama735-droid.github.io/Ranztopup-/index.html">
-
-                Top Up Mobile Legends →
-
-            </a>
-
-        </div>
-
-
-        <!-- FREE FIRE -->
-
-        <div class="game">
-
-            <div class="game-icon">
-                🔥
-            </div>
-
-            <h3>Free Fire</h3>
-
-            <div class="game-desc">
-                Top Up Diamond Free Fire
-            </div>
-
-            <div class="products">
-
-                <div class="tag">💎 5 Diamond</div>
-                <div class="tag">💎 50 Diamond</div>
-                <div class="tag">💎 100 Diamond</div>
-                <div class="tag">⚡ Banyak pilihan</div>
-
-            </div>
-
-            <a
-            class="button"
-            href="https://raarama735-droid.github.io/Ranztopup-/free-fire.html">
-
-                Top Up Free Fire →
-
-            </a>
-
-        </div>
-
-
-        <!-- PUBG -->
-
-        <div class="game">
-
-            <div class="game-icon">
-                🪖
-            </div>
-
-            <h3>PUBG Mobile</h3>
-
-            <div class="game-desc">
-                Top Up UC PUBG Mobile
-            </div>
-
-            <div class="products">
-
-                <div class="tag">🪙 60 UC</div>
-                <div class="tag">🪙 120 UC</div>
-                <div class="tag">🪙 325 UC</div>
-                <div class="tag">⚡ Banyak pilihan</div>
-
-            </div>
-
-            <a
-            class="button"
-            href="https://raarama735-droid.github.io/Ranztopup-/pubg-mobile.html">
-
-                Top Up PUBG Mobile →
-
-            </a>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- FEATURES -->
-
-    <div class="features">
-
-        <div class="feature">
-
-            <div class="feature-icon">⚡</div>
-
-            <h4>Proses Cepat</h4>
-
-            <p>
-                Pesanan diproses dengan cepat
-                setelah pembayaran.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">💳</div>
-
-            <h4>Pembayaran Mudah</h4>
-
-            <p>
-                Tersedia berbagai pilihan
-                metode pembayaran.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">🔒</div>
-
-            <h4>Aman</h4>
-
-            <p>
-                Tidak membutuhkan password,
-                PIN, atau OTP game.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">📱</div>
-
-            <h4>Mobile Friendly</h4>
-
-            <p>
-                Tampilan nyaman digunakan
-                melalui HP.
-            </p>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-    <div class="footer-logo">
-        RanzTopup
-    </div>
-
-    <p>
-        Top Up Game Favoritmu dengan Mudah 🎮
-    </p>
-
-    <p style="margin-top:10px;">
-        © 2026 RanzTopup
-    </p>
-
-</footer>
-
+<section class="games-section" id="games"><div class="games">
+<div class="game-card">
+<div class="game-image"><img src="ml-topup.png" alt="Mobile Legends Top Up"></div>
+<div class="card-content">
+<h2>Mobile Legends</h2><p>Top Up Diamond dan Weekly Diamond Pass Mobile Legends dengan mudah.</p>
+<div class="tags"><span class="tag">💎 Diamond</span><span class="tag">WDP 1×</span><span class="tag">WDP 2×</span><span class="tag">WDP 3×</span></div>
+<a href="index.html" class="topup-btn">Top Up Mobile Legends →</a>
+</div></div>
+
+<div class="game-card ff-card">
+<div class="game-image"><img src="ff-topup.png" alt="Free Fire Top Up"></div>
+<div class="card-content">
+<h2>Free Fire</h2><p>Top Up Diamond Free Fire dengan cepat dan praktis.</p>
+<div class="tags"><span class="tag">💎 5 Diamond</span><span class="tag">💎 50 Diamond</span><span class="tag">💎 100 Diamond</span><span class="tag">⚡ Banyak pilihan</span></div>
+<a href="free-fire.html" class="topup-btn">Top Up Free Fire →</a>
+</div></div>
+
+<div class="game-card pubg-card">
+<div class="game-image"><img src="pubg-topup.png" alt="PUBG Mobile Top Up"></div>
+<div class="card-content">
+<h2>PUBG Mobile</h2><p>Top Up UC PUBG Mobile dengan proses pemesanan yang mudah.</p>
+<div class="tags"><span class="tag">UC 60</span><span class="tag">UC 120</span><span class="tag">UC 325</span><span class="tag">⚡ Banyak pilihan</span></div>
+<a href="pubg-mobile.html" class="topup-btn">Top Up PUBG Mobile →</a>
+</div></div>
+</div></section>
+
+<section class="features">
+<div class="feature"><div class="feature-icon">⚡</div><div><h4>Proses Cepat</h4><p>Pesanan diproses dengan cepat.</p></div></div>
+<div class="feature"><div class="feature-icon">💳</div><div><h4>Pembayaran Mudah</h4><p>Banyak pilihan pembayaran.</p></div></div>
+<div class="feature"><div class="feature-icon">🛡️</div><div><h4>Aman</h4><p>Tidak membutuhkan password game.</p></div></div>
+<div class="feature"><div class="feature-icon">📱</div><div><h4>Mobile Friendly</h4><p>Nyaman digunakan melalui HP.</p></div></div>
+</section>
+
+<footer>© 2026 <strong>RanzTopup</strong>. Semua hak dilindungi.</footer>
 </body>
-    </html>
+</html>
