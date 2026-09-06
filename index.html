@@ -7,176 +7,127 @@
 
 <style>
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
 }
 
 body{
-  background:#080d18;
-  color:white;
+    margin:0;
+    background:#0f172a;
+    color:white;
 }
 
 header{
-  background:#101827;
-  padding:18px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid #263248;
+    background:#111827;
+    padding:20px;
+    text-align:center;
 }
 
-.logo{
-  font-size:24px;
-  font-weight:bold;
-  color:#00e5ff;
-}
-
-.badge{
-  background:#18263b;
-  padding:8px 12px;
-  border-radius:20px;
-  font-size:12px;
+header h1{
+    margin:0;
+    color:#38bdf8;
 }
 
 .container{
-  max-width:650px;
-  margin:auto;
-  padding:20px;
-}
-
-.hero{
-  text-align:center;
-  padding:25px 10px;
-}
-
-.hero h1{
-  font-size:30px;
-  color:#00e5ff;
-  margin-bottom:8px;
-}
-
-.hero p{
-  color:#aeb9ca;
+    max-width:500px;
+    margin:25px auto;
+    padding:20px;
 }
 
 .card{
-  background:#111a2b;
-  border:1px solid #25334a;
-  border-radius:15px;
-  padding:18px;
-  margin-bottom:18px;
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
 }
 
-.card h2{
-  font-size:19px;
-  margin-bottom:15px;
+h2{
+    text-align:center;
 }
 
 label{
-  display:block;
-  margin:12px 0 7px;
-  color:#cbd5e1;
-  font-size:14px;
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
 }
 
 input,select{
-  width:100%;
-  padding:13px;
-  border-radius:9px;
-  border:1px solid #34445d;
-  background:#0b1220;
-  color:white;
-  outline:none;
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:white;
+    font-size:15px;
 }
 
-input:focus,select:focus{
-  border-color:#00e5ff;
+.products{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
 }
 
-.diamonds{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:10px;
+.product{
+    padding:14px 8px;
+    background:#334155;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    border:2px solid transparent;
+    transition:.2s;
 }
 
-.diamond{
-  background:#0b1220;
-  border:1px solid #34445d;
-  padding:13px;
-  border-radius:10px;
-  cursor:pointer;
-  transition:.2s;
+.product:hover{
+    border-color:#38bdf8;
 }
 
-.diamond:hover{
-  border-color:#00e5ff;
+.product.active{
+    border-color:#38bdf8;
+    background:#164e63;
 }
 
-.diamond.active{
-  border-color:#00e5ff;
-  background:#10283a;
-}
-
-.diamond b{
-  display:block;
-  margin-bottom:5px;
-}
-
-.price{
-  color:#00e5ff;
-  font-weight:bold;
-}
-
-.summary{
-  background:#0b1220;
-  border-radius:10px;
-  padding:15px;
-  line-height:1.8;
-}
-
-.total{
-  font-size:20px;
-  color:#00e5ff;
-  font-weight:bold;
+.product small{
+    display:block;
+    color:#cbd5e1;
+    margin-top:4px;
 }
 
 button{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:10px;
-  background:#00e5ff;
-  color:#001018;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 button:hover{
-  opacity:.9;
+    background:#16a34a;
+}
+
+.summary{
+    margin-top:20px;
+    padding:15px;
+    background:#0f172a;
+    border-radius:10px;
 }
 
 .note{
-  color:#94a3b8;
-  font-size:12px;
-  margin-top:10px;
-  line-height:1.5;
-  text-align:center;
+    margin-top:15px;
+    font-size:12px;
+    color:#cbd5e1;
+    text-align:center;
 }
 
-footer{
-  text-align:center;
-  padding:25px;
-  color:#718096;
-  font-size:12px;
-}
-
-@media(max-width:400px){
-  .diamonds{
-    grid-template-columns:1fr 1fr;
-  }
+.section-title{
+    margin-top:20px;
+    margin-bottom:5px;
+    color:#38bdf8;
 }
 </style>
 </head>
@@ -184,237 +135,217 @@ footer{
 <body>
 
 <header>
-  <div class="logo">RanzTopup</div>
-  <div class="badge">MOBILE LEGENDS</div>
+    <h1>RanzTopup</h1>
+    <p>Mobile Legends</p>
 </header>
 
 <div class="container">
 
-  <section class="hero">
-    <h1>Top Up Mobile Legends</h1>
-    <p>Murah • Cepat • Aman</p>
-  </section>
+<div class="card">
 
-  <div class="card">
-    <h2>🎮 Data Akun</h2>
+<h2>Top Up Mobile Legends</h2>
 
-    <label>User ID</label>
-    <input id="userId" type="number" placeholder="Contoh: 123456789">
+<label>User ID</label>
+<input type="text" id="userId" placeholder="Masukkan User ID">
 
-    <label>Zone / Server ID</label>
-    <input id="zoneId" type="number" placeholder="Contoh: 1234">
-  </div>
+<label>Server ID</label>
+<input type="text" id="serverId" placeholder="Masukkan Server ID">
 
-  <div class="card">
-    <h2>💎 Pilih Diamond</h2>
+<h3 class="section-title">💎 Diamond & WDP</h3>
 
-    <div class="diamonds">
+<div class="products">
 
-      <div class="diamond" onclick="pilih(this,5,2000)">
-        <b>5 Diamond</b>
-        <span class="price">Rp2.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,12,4000)">
-        <b>12 Diamond</b>
-        <span class="price">Rp4.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,19,6000)">
-        <b>19 Diamond</b>
-        <span class="price">Rp6.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,28,9000)">
-        <b>28 Diamond</b>
-        <span class="price">Rp9.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,44,13000)">
-        <b>44 Diamond</b>
-        <span class="price">Rp13.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,59,18000)">
-        <b>59 Diamond</b>
-        <span class="price">Rp18.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,85,24000)">
-        <b>85 Diamond</b>
-        <span class="price">Rp24.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,86,23000)">
-        <b>86 Diamond</b>
-        <span class="price">Rp23.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,170,48000)">
-        <b>170 Diamond</b>
-        <span class="price">Rp48.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,172,45000)">
-        <b>172 Diamond</b>
-        <span class="price">Rp45.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,257,65000)">
-        <b>257 Diamond</b>
-        <span class="price">Rp65.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,344,82000)">
-        <b>344 Diamond</b>
-        <span class="price">Rp82.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,429,105000)">
-        <b>429 Diamond</b>
-        <span class="price">Rp105.000</span>
-      </div>
-
-      <div class="diamond" onclick="pilih(this,514,125000)">
-        <b>514 Diamond</b>
-        <span class="price">Rp125.000</span>
-      </div>
-
+    <div class="product" onclick="pilihProduk(this,'5 Diamond','Rp2.000')">
+        💎 5 Diamond
+        <small>Rp2.000</small>
     </div>
-  </div>
 
-  <div class="card">
-    <h2>💳 Pembayaran</h2>
-
-    <select id="payment">
-      <option value="">Pilih metode pembayaran</option>
-      <option>QRIS</option>
-      <option>DANA</option>
-      <option>OVO</option>
-      <option>GoPay</option>
-    </select>
-
-    <p class="note">
-      Pembayaran belum otomatis. Setelah menekan tombol,
-      pesanan akan dikirim ke admin melalui WhatsApp.
-    </p>
-  </div>
-
-  <div class="card">
-    <h2>🧾 Ringkasan Pesanan</h2>
-
-    <div class="summary">
-      <div>User ID: <b id="sumUser">-</b></div>
-      <div>Zone ID: <b id="sumZone">-</b></div>
-      <div>Diamond: <b id="sumDiamond">-</b></div>
-      <div>Metode: <b id="sumPayment">-</b></div>
-      <div>Total: <span class="total" id="sumTotal">Rp0</span></div>
+    <div class="product" onclick="pilihProduk(this,'12 Diamond','Rp4.000')">
+        💎 12 Diamond
+        <small>Rp4.000</small>
     </div>
-  </div>
 
-  <button onclick="checkout()">
-    📱 Pesan Sekarang via WhatsApp
-  </button>
+    <div class="product" onclick="pilihProduk(this,'19 Diamond','Rp6.000')">
+        💎 19 Diamond
+        <small>Rp6.000</small>
+    </div>
 
-  <p class="note">
-    Jangan pernah memberikan password, PIN, atau OTP akun game.
-  </p>
+    <div class="product" onclick="pilihProduk(this,'28 Diamond','Rp9.000')">
+        💎 28 Diamond
+        <small>Rp9.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'44 Diamond','Rp13.000')">
+        💎 44 Diamond
+        <small>Rp13.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'59 Diamond','Rp18.000')">
+        💎 59 Diamond
+        <small>Rp18.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'85 Diamond','Rp24.000')">
+        💎 85 Diamond
+        <small>Rp24.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'86 Diamond','Rp23.000')">
+        💎 86 Diamond
+        <small>Rp23.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'170 Diamond','Rp48.000')">
+        💎 170 Diamond
+        <small>Rp48.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'172 Diamond','Rp45.000')">
+        💎 172 Diamond
+        <small>Rp45.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'257 Diamond','Rp65.000')">
+        💎 257 Diamond
+        <small>Rp65.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'344 Diamond','Rp82.000')">
+        💎 344 Diamond
+        <small>Rp82.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'429 Diamond','Rp105.000')">
+        💎 429 Diamond
+        <small>Rp105.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'514 Diamond','Rp125.000')">
+        💎 514 Diamond
+        <small>Rp125.000</small>
+    </div>
+
+    <!-- WDP -->
+
+    <div class="product" onclick="pilihProduk(this,'1x Weekly Diamond Pass','Rp34.000')">
+        🎫 1× WDP
+        <small>Rp34.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'2x Weekly Diamond Pass','Rp68.000')">
+        🎫 2× WDP
+        <small>Rp68.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'3x Weekly Diamond Pass','Rp102.000')">
+        🎫 3× WDP
+        <small>Rp102.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'4x Weekly Diamond Pass','Rp136.000')">
+        🎫 4× WDP
+        <small>Rp136.000</small>
+    </div>
+
+    <div class="product" onclick="pilihProduk(this,'5x Weekly Diamond Pass','Rp170.000')">
+        🎫 5× WDP
+        <small>Rp170.000</small>
+    </div>
 
 </div>
 
-<footer>
-  © 2026 RanzTopup • Top Up Game
-</footer>
+<label>Metode Pembayaran</label>
+
+<select id="payment">
+    <option value="">-- Pilih Pembayaran --</option>
+    <option>QRIS</option>
+    <option>DANA</option>
+    <option>OVO</option>
+    <option>GoPay</option>
+</select>
+
+<div class="summary">
+    <b>Pesanan:</b>
+    <p id="summary">Belum memilih produk</p>
+</div>
+
+<button onclick="checkout()">📲 Order via WhatsApp</button>
+
+<div class="note">
+⚠️ Jangan pernah memberikan password, PIN, atau OTP akun Mobile Legends.
+</div>
+
+</div>
+</div>
 
 <script>
 
-let selectedDiamond = 0;
-let selectedPrice = 0;
+let selectedProduct = "";
+let selectedPrice = "";
 
-function pilih(element,diamond,price){
+function pilihProduk(element,produk,harga){
 
-  document.querySelectorAll(".diamond").forEach(function(item){
-    item.classList.remove("active");
-  });
+    document.querySelectorAll(".product").forEach(function(item){
+        item.classList.remove("active");
+    });
 
-  element.classList.add("active");
+    element.classList.add("active");
 
-  selectedDiamond = diamond;
-  selectedPrice = price;
+    selectedProduct = produk;
+    selectedPrice = harga;
 
-  updateSummary();
+    document.getElementById("summary").innerHTML =
+        produk + " — " + harga;
 }
-
-function updateSummary(){
-
-  const user = document.getElementById("userId").value;
-  const zone = document.getElementById("zoneId").value;
-  const payment = document.getElementById("payment").value;
-
-  document.getElementById("sumUser").textContent = user || "-";
-  document.getElementById("sumZone").textContent = zone || "-";
-  document.getElementById("sumDiamond").textContent =
-    selectedDiamond ? selectedDiamond + " Diamond" : "-";
-  document.getElementById("sumPayment").textContent =
-    payment || "-";
-
-  document.getElementById("sumTotal").textContent =
-    "Rp" + selectedPrice.toLocaleString("id-ID");
-}
-
-document.getElementById("userId").addEventListener("input",updateSummary);
-document.getElementById("zoneId").addEventListener("input",updateSummary);
-document.getElementById("payment").addEventListener("change",updateSummary);
 
 function checkout(){
 
-  const user = document.getElementById("userId").value;
-  const zone = document.getElementById("zoneId").value;
-  const payment = document.getElementById("payment").value;
+    const userId =
+        document.getElementById("userId").value.trim();
 
-  if(!user){
-    alert("Masukkan User ID terlebih dahulu!");
-    return;
-  }
+    const serverId =
+        document.getElementById("serverId").value.trim();
 
-  if(!zone){
-    alert("Masukkan Zone ID terlebih dahulu!");
-    return;
-  }
+    const payment =
+        document.getElementById("payment").value;
 
-  if(!selectedDiamond){
-    alert("Pilih jumlah Diamond terlebih dahulu!");
-    return;
-  }
+    if(!userId){
+        alert("Masukkan User ID terlebih dahulu!");
+        return;
+    }
 
-  if(!payment){
-    alert("Pilih metode pembayaran terlebih dahulu!");
-    return;
-  }
+    if(!serverId){
+        alert("Masukkan Server ID terlebih dahulu!");
+        return;
+    }
 
-  const nomorAdmin = "6282189782146";
+    if(!selectedProduct){
+        alert("Pilih Diamond atau WDP terlebih dahulu!");
+        return;
+    }
 
-  const pesan =
-`Halo Admin RanzTopup 👋
+    if(!payment){
+        alert("Pilih metode pembayaran terlebih dahulu!");
+        return;
+    }
 
-Saya ingin melakukan top up Mobile Legends.
+    const nomorAdmin = "6282189782146";
 
-User ID: ${user}
-Zone ID: ${zone}
-Diamond: ${selectedDiamond} Diamond
-Harga: Rp${selectedPrice.toLocaleString("id-ID")}
-Pembayaran: ${payment}
+    const pesan =
+        "Halo RanzTopup, saya ingin order Mobile Legends%0A%0A" +
+        "User ID: " + userId + "%0A" +
+        "Server ID: " + serverId + "%0A" +
+        "Produk: " + selectedProduct + "%0A" +
+        "Harga: " + selectedPrice + "%0A" +
+        "Pembayaran: " + payment;
 
-Mohon diproses ya.`;
-
-  const url =
-    "https://wa.me/" + nomorAdmin +
-    "?text=" + encodeURIComponent(pesan);
-
-  window.open(url,"_blank");
+    window.open(
+        "https://wa.me/" + nomorAdmin + "?text=" + pesan,
+        "_blank"
+    );
 }
 
 </script>
 
 </body>
-</html>
+  </html>
