@@ -8,357 +8,524 @@
 
 <style>
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
     font-family:Arial,sans-serif;
 }
 
 body{
-    margin:0;
-    background:#0f172a;
+    background:#070b16;
     color:white;
+    min-height:100vh;
 }
 
 /* HEADER */
 header{
-    background:#111827;
-    padding:20px;
-    text-align:center;
-    border-bottom:1px solid #334155;
+    position:sticky;
+    top:0;
+    z-index:10;
+    background:rgba(7,11,22,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #1e293b;
+}
+
+.nav{
+    max-width:1100px;
+    margin:auto;
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:28px;
-    font-weight:bold;
+    font-size:25px;
+    font-weight:900;
     color:#38bdf8;
 }
 
-.tagline{
-    margin:8px 0 0;
-    color:#cbd5e1;
+.logo span{
+    color:white;
+}
+
+.status{
+    font-size:12px;
+    color:#86efac;
+    background:#0f2a1b;
+    padding:8px 12px;
+    border-radius:20px;
 }
 
 /* HERO */
 .hero{
+    max-width:1100px;
+    margin:auto;
+    padding:60px 20px 35px;
     text-align:center;
-    padding:35px 20px;
+}
+
+.badge{
+    display:inline-block;
+    background:#0c2535;
+    color:#38bdf8;
+    padding:8px 15px;
+    border-radius:30px;
+    font-size:13px;
+    margin-bottom:18px;
 }
 
 .hero h1{
-    margin:0;
-    font-size:30px;
+    font-size:clamp(32px,7vw,58px);
+    line-height:1.05;
+    margin-bottom:15px;
+}
+
+.hero h1 span{
+    color:#38bdf8;
 }
 
 .hero p{
-    color:#cbd5e1;
-    margin-top:10px;
+    color:#94a3b8;
+    max-width:600px;
+    margin:auto;
+    line-height:1.6;
 }
 
-/* CONTAINER */
+.hero-button{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 25px;
+    background:#22c55e;
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:bold;
+    box-shadow:0 8px 25px rgba(34,197,94,.2);
+}
+
+/* GAME SECTION */
 .container{
-    max-width:900px;
+    max-width:1100px;
     margin:auto;
     padding:20px;
 }
 
-.games{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:18px;
+.section-title{
+    text-align:center;
+    margin:20px 0 25px;
 }
 
-/* GAME CARD */
-.game-card{
+.section-title h2{
+    font-size:28px;
+}
+
+.section-title p{
+    color:#64748b;
+    margin-top:7px;
+}
+
+/* CARDS */
+.games{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+}
+
+.game{
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(145deg,#111827,#0f172a);
+    border:1px solid #1e293b;
+    border-radius:20px;
+    padding:25px;
+    transition:.3s;
+}
+
+.game:hover{
+    transform:translateY(-6px);
+    border-color:#38bdf8;
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.game-icon{
+    width:65px;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:18px;
     background:#1e293b;
-    padding:22px;
-    border-radius:16px;
+    font-size:34px;
+    margin-bottom:18px;
+}
+
+.game h3{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.game-desc{
+    color:#94a3b8;
+    font-size:14px;
+    margin-bottom:18px;
+}
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+}
+
+.tag{
+    background:#172033;
+    border:1px solid #263449;
+    color:#cbd5e1;
+    padding:7px 10px;
+    border-radius:8px;
+    font-size:12px;
+}
+
+.button{
+    display:block;
     text-align:center;
-    border:1px solid #334155;
+    text-decoration:none;
+    color:white;
+    background:#2563eb;
+    padding:13px;
+    border-radius:11px;
+    font-weight:bold;
     transition:.2s;
 }
 
-.game-card:hover{
-    transform:translateY(-4px);
-    border-color:#38bdf8;
+.button:hover{
+    background:#1d4ed8;
 }
 
-.icon{
-    font-size:50px;
-    margin-bottom:10px;
+.ml .button{
+    background:#38bdf8;
+    color:#06111c;
 }
 
-.game-card h2{
-    margin:8px 0;
+.ml .button:hover{
+    background:#0ea5e9;
 }
 
-.game-card p{
-    color:#cbd5e1;
-}
-
-.price{
-    margin:15px 0;
-    font-size:14px;
-    color:#38bdf8;
-    line-height:1.7;
-}
-
-.topup-btn{
-    display:block;
-    text-decoration:none;
-    background:#22c55e;
-    color:white;
-    padding:13px;
-    border-radius:10px;
-    font-weight:bold;
-}
-
-.topup-btn:hover{
-    background:#16a34a;
-}
-
-/* FITUR */
+/* FEATURES */
 .features{
-    margin-top:35px;
+    margin-top:45px;
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
 }
 
 .feature{
-    background:#1e293b;
-    padding:18px;
+    background:#0f172a;
+    border:1px solid #1e293b;
+    padding:20px;
+    border-radius:15px;
     text-align:center;
-    border-radius:12px;
 }
 
 .feature-icon{
-    font-size:30px;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.feature h4{
+    margin-bottom:7px;
 }
 
 .feature p{
-    color:#cbd5e1;
-    font-size:14px;
+    color:#64748b;
+    font-size:13px;
+    line-height:1.5;
 }
 
 /* FOOTER */
 footer{
-    margin-top:40px;
-    padding:25px;
+    margin-top:55px;
+    background:#050811;
+    border-top:1px solid #1e293b;
+    padding:30px 20px;
     text-align:center;
-    background:#111827;
-    color:#94a3b8;
+    color:#64748b;
     font-size:13px;
 }
 
-.note{
-    margin-top:10px;
+.footer-logo{
+    color:#38bdf8;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:8px;
+}
+
+@media(max-width:500px){
+
+    .nav{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .status{
+        font-size:10px;
+    }
+
+    .hero{
+        padding-top:45px;
+    }
+
+    .game{
+        padding:20px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <header>
+    <div class="nav">
 
-    <div class="logo">
-        RanzTopup
+        <div class="logo">
+            Ranz<span>Topup</span>
+        </div>
+
+        <div class="status">
+            ● ONLINE
+        </div>
+
     </div>
-
-    <p class="tagline">
-        Top Up Game Cepat & Mudah ⚡
-    </p>
-
 </header>
 
 
+<!-- HERO -->
 <section class="hero">
 
-    <h1>🎮 Pilih Game Kamu</h1>
+    <div class="badge">
+        ⚡ TOP UP GAME TERPERCAYA
+    </div>
+
+    <h1>
+        Top Up Game<br>
+        <span>Cepat & Mudah</span>
+    </h1>
 
     <p>
-        Top up game favoritmu dengan mudah melalui RanzTopup.
+        Pilih game favoritmu, pilih produk yang kamu inginkan,
+        lalu lakukan pemesanan dengan mudah.
     </p>
+
+    <a href="#games" class="hero-button">
+        🎮 Pilih Game
+    </a>
 
 </section>
 
 
-<div class="container">
+<!-- GAME -->
+<div class="container" id="games">
 
-<div class="games">
+    <div class="section-title">
+        <h2>🎮 Game Pilihan</h2>
+        <p>Pilih game yang ingin kamu top up</p>
+    </div>
 
 
-    <!-- MOBILE LEGENDS -->
+    <div class="games">
 
-    <div class="game-card">
 
-        <div class="icon">
-            🎮
+        <!-- MOBILE LEGENDS -->
+
+        <div class="game ml">
+
+            <div class="game-icon">
+                💎
+            </div>
+
+            <h3>Mobile Legends</h3>
+
+            <div class="game-desc">
+                Diamond & Weekly Diamond Pass
+            </div>
+
+            <div class="products">
+
+                <div class="tag">💎 Diamond</div>
+                <div class="tag">🎫 WDP 1×</div>
+                <div class="tag">🎫 WDP 2×</div>
+                <div class="tag">🎫 WDP 3×</div>
+
+            </div>
+
+            <a
+            class="button"
+            href="https://raarama735-droid.github.io/Ranztopup-/index.html">
+
+                Top Up Mobile Legends →
+
+            </a>
+
         </div>
 
-        <h2>Mobile Legends</h2>
 
-        <p>
-            Diamond & Weekly Diamond Pass
-        </p>
+        <!-- FREE FIRE -->
 
-        <div class="price">
+        <div class="game">
 
-            💎 Diamond mulai <b>Rp2.000</b><br>
+            <div class="game-icon">
+                🔥
+            </div>
 
-            🎫 WDP 1× <b>Rp34.000</b><br>
+            <h3>Free Fire</h3>
 
-            🎫 WDP 2× <b>Rp68.000</b><br>
+            <div class="game-desc">
+                Top Up Diamond Free Fire
+            </div>
 
-            🎫 WDP 3× <b>Rp102.000</b>
+            <div class="products">
+
+                <div class="tag">💎 5 Diamond</div>
+                <div class="tag">💎 50 Diamond</div>
+                <div class="tag">💎 100 Diamond</div>
+                <div class="tag">⚡ Banyak pilihan</div>
+
+            </div>
+
+            <a
+            class="button"
+            href="https://raarama735-droid.github.io/Ranztopup-/free-fire.html">
+
+                Top Up Free Fire →
+
+            </a>
 
         </div>
 
-        <a
-        class="topup-btn"
-        href="index.html">
 
-            Top Up Mobile Legends
+        <!-- PUBG -->
 
-        </a>
+        <div class="game">
+
+            <div class="game-icon">
+                🪖
+            </div>
+
+            <h3>PUBG Mobile</h3>
+
+            <div class="game-desc">
+                Top Up UC PUBG Mobile
+            </div>
+
+            <div class="products">
+
+                <div class="tag">🪙 60 UC</div>
+                <div class="tag">🪙 120 UC</div>
+                <div class="tag">🪙 325 UC</div>
+                <div class="tag">⚡ Banyak pilihan</div>
+
+            </div>
+
+            <a
+            class="button"
+            href="https://raarama735-droid.github.io/Ranztopup-/pubg-mobile.html">
+
+                Top Up PUBG Mobile →
+
+            </a>
+
+        </div>
+
 
     </div>
 
 
-    <!-- FREE FIRE -->
+    <!-- FEATURES -->
 
-    <div class="game-card">
+    <div class="features">
 
-        <div class="icon">
-            🔥
-        </div>
+        <div class="feature">
 
-        <h2>Free Fire</h2>
+            <div class="feature-icon">⚡</div>
 
-        <p>
-            Top Up Diamond Free Fire
-        </p>
+            <h4>Proses Cepat</h4>
 
-        <div class="price">
-
-            💎 Diamond mulai <b>Rp2.000</b><br>
-
-            ⚡ Proses cepat<br>
-
-            🔒 Aman & mudah
+            <p>
+                Pesanan diproses dengan cepat
+                setelah pembayaran.
+            </p>
 
         </div>
 
-        <a
-        class="topup-btn"
-        href="https://raarama735-droid.github.io/Ranztopup-/free-fire.html">
 
-            Top Up Free Fire
+        <div class="feature">
 
-        </a>
+            <div class="feature-icon">💳</div>
+
+            <h4>Pembayaran Mudah</h4>
+
+            <p>
+                Tersedia berbagai pilihan
+                metode pembayaran.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🔒</div>
+
+            <h4>Aman</h4>
+
+            <p>
+                Tidak membutuhkan password,
+                PIN, atau OTP game.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">📱</div>
+
+            <h4>Mobile Friendly</h4>
+
+            <p>
+                Tampilan nyaman digunakan
+                melalui HP.
+            </p>
+
+        </div>
 
     </div>
-
-
-    <!-- PUBG MOBILE -->
-
-    <div class="game-card">
-
-        <div class="icon">
-            🪖
-        </div>
-
-        <h2>PUBG Mobile</h2>
-
-        <p>
-            Top Up UC PUBG Mobile
-        </p>
-
-        <div class="price">
-
-            🪙 UC mulai <b>Rp15.000</b><br>
-
-            ⚡ Proses cepat<br>
-
-            🔒 Aman & mudah
-
-        </div>
-
-        <a
-        class="topup-btn"
-        href="https://raarama735-droid.github.io/Ranztopup-/pubg-mobile.html">
-
-            Top Up PUBG Mobile
-
-        </a>
-
-    </div>
-
 
 </div>
 
 
-<!-- FITUR -->
-
-<div class="features">
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            ⚡
-        </div>
-
-        <b>Proses Cepat</b>
-
-        <p>
-            Pesanan diproses dengan cepat.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            💳
-        </div>
-
-        <b>Pembayaran</b>
-
-        <p>
-            QRIS, DANA, OVO & GoPay.
-        </p>
-
-    </div>
-
-
-    <div class="feature">
-
-        <div class="feature-icon">
-            🔒
-        </div>
-
-        <b>Aman</b>
-
-        <p>
-            Tidak membutuhkan password atau OTP.
-        </p>
-
-    </div>
-
-</div>
-
-</div>
-
+<!-- FOOTER -->
 
 <footer>
 
-    © 2026 RanzTopup
-
-    <div class="note">
-        Top Up Game Favoritmu dengan Mudah 🎮
+    <div class="footer-logo">
+        RanzTopup
     </div>
+
+    <p>
+        Top Up Game Favoritmu dengan Mudah 🎮
+    </p>
+
+    <p style="margin-top:10px;">
+        © 2026 RanzTopup
+    </p>
 
 </footer>
 
-
 </body>
-        </html>
+    </html>
