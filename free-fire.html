@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RanzTopup - Free Fire</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+body{background:#080d18;color:white}
+header{background:#101827;padding:18px 20px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:24px;font-weight:bold;color:#00e5ff}
+.badge{background:#18263b;padding:8px 12px;border-radius:20px;font-size:12px}
+.container{max-width:650px;margin:auto;padding:20px}
+.hero{text-align:center;padding:25px 10px}
+.hero h1{font-size:30px;color:#00e5ff;margin-bottom:8px}
+.hero p{color:#aeb9ca}
+.card{background:#111a2b;border:1px solid #25334a;border-radius:15px;padding:18px;margin-bottom:18px}
+.card h2{font-size:19px;margin-bottom:15px}
+label{display:block;margin:12px 0 7px;color:#cbd5e1;font-size:14px}
+input,select{width:100%;padding:13px;border-radius:9px;border:1px solid #34445d;background:#0b1220;color:white;outline:none}
+.diamonds{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.diamond{background:#0b1220;border:1px solid #34445d;padding:13px;border-radius:10px;cursor:pointer}
+.diamond.active{border-color:#00e5ff;background:#10283a}
+.diamond b{display:block;margin-bottom:5px}
+.price{color:#00e5ff;font-weight:bold}
+.summary{background:#0b1220;border-radius:10px;padding:15px;line-height:1.8}
+.total{font-size:20px;color:#00e5ff;font-weight:bold}
+button{width:100%;padding:15px;border:none;border-radius:10px;background:#00e5ff;color:#001018;font-size:16px;font-weight:bold}
+.note{color:#94a3b8;font-size:12px;margin-top:10px;line-height:1.5;text-align:center}
+footer{text-align:center;padding:25px;color:#718096;font-size:12px}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">RanzTopup</div>
+<div class="badge">FREE FIRE</div>
+</header>
+
+<div class="container">
+
+<section class="hero">
+<h1>🔥 Top Up Free Fire</h1>
+<p>Diamond Free Fire murah & praktis</p>
+</section>
+
+<div class="card">
+<h2>👤 Data Akun</h2>
+
+<label>ID Pemain</label>
+<input id="userId" type="number" placeholder="Masukkan ID Free Fire">
+</div>
+
+<div class="card">
+<h2>💎 Pilih Diamond</h2>
+
+<div class="diamonds">
+
+<div class="diamond" onclick="pilih(this,5,2000)">
+<b>5 Diamond</b><span class="price">Rp2.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,12,4000)">
+<b>12 Diamond</b><span class="price">Rp4.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,20,6000)">
+<b>20 Diamond</b><span class="price">Rp6.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,50,13000)">
+<b>50 Diamond</b><span class="price">Rp13.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,70,18000)">
+<b>70 Diamond</b><span class="price">Rp18.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,100,24000)">
+<b>100 Diamond</b><span class="price">Rp24.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,140,32000)">
+<b>140 Diamond</b><span class="price">Rp32.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,210,47000)">
+<b>210 Diamond</b><span class="price">Rp47.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,355,76000)">
+<b>355 Diamond</b><span class="price">Rp76.000</span>
+</div>
+
+<div class="diamond" onclick="pilih(this,720,150000)">
+<b>720 Diamond</b><span class="price">Rp150.000</span>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<h2>💳 Pembayaran</h2>
+
+<select id="payment">
+<option value="">Pilih metode pembayaran</option>
+<option>QRIS</option>
+<option>DANA</option>
+<option>OVO</option>
+<option>GoPay</option>
+</select>
+
+<p class="note">
+Pembayaran belum otomatis. Pesanan akan dikirim ke admin melalui WhatsApp.
+</p>
+</div>
+
+<div class="card">
+<h2>🧾 Ringkasan</h2>
+
+<div class="summary">
+<div>ID Pemain: <b id="sumUser">-</b></div>
+<div>Diamond: <b id="sumDiamond">-</b></div>
+<div>Metode: <b id="sumPayment">-</b></div>
+<div>Total: <span class="total" id="sumTotal">Rp0</span></div>
+</div>
+</div>
+
+<button onclick="checkout()">📱 Pesan Sekarang via WhatsApp</button>
+
+<p class="note">
+Jangan pernah memberikan password, PIN, atau OTP.
+</p>
+
+</div>
+
+<footer>
+© 2026 RanzTopup • Top Up Game
+</footer>
+
+<script>
+let selectedDiamond=0;
+let selectedPrice=0;
+
+function pilih(element,diamond,price){
+document.querySelectorAll(".diamond").forEach(function(item){
+item.classList.remove("active");
+});
+element.classList.add("active");
+selectedDiamond=diamond;
+selectedPrice=price;
+updateSummary();
+}
+
+function updateSummary(){
+const user=document.getElementById("userId").value;
+const payment=document.getElementById("payment").value;
+
+document.getElementById("sumUser").textContent=user||"-";
+document.getElementById("sumDiamond").textContent=
+selectedDiamond ? selectedDiamond+" Diamond":"-";
+document.getElementById("sumPayment").textContent=payment||"-";
+document.getElementById("sumTotal").textContent=
+"Rp"+selectedPrice.toLocaleString("id-ID");
+}
+
+document.getElementById("userId").addEventListener("input",updateSummary);
+document.getElementById("payment").addEventListener("change",updateSummary);
+
+function checkout(){
+
+const user=document.getElementById("userId").value;
+const payment=document.getElementById("payment").value;
+
+if(!user){
+alert("Masukkan ID Pemain terlebih dahulu!");
+return;
+}
+
+if(!selectedDiamond){
+alert("Pilih jumlah Diamond terlebih dahulu!");
+return;
+}
+
+if(!payment){
+alert("Pilih metode pembayaran terlebih dahulu!");
+return;
+}
+
+const nomorAdmin="6282189782146";
+
+const pesan=`Halo Admin RanzTopup 👋
+
+Saya ingin top up Free Fire.
+
+ID Pemain: ${user}
+Diamond: ${selectedDiamond} Diamond
+Harga: Rp${selectedPrice.toLocaleString("id-ID")}
+Pembayaran: ${payment}
+
+Mohon diproses ya.`;
+
+const url="https://wa.me/"+nomorAdmin+
+"?text="+encodeURIComponent(pesan);
+
+window.open(url,"_blank");
+}
+</script>
+
+</body>
+  </html>
