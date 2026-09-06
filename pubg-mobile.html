@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RanzTopup - PUBG Mobile</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    margin:0;
+    background:#0f172a;
+    color:white;
+}
+
+header{
+    background:#111827;
+    padding:20px;
+    text-align:center;
+}
+
+header h1{
+    margin:0;
+    color:#38bdf8;
+}
+
+.container{
+    max-width:500px;
+    margin:25px auto;
+    padding:20px;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:15px;
+    box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+h2{
+    text-align:center;
+}
+
+label{
+    display:block;
+    margin-top:15px;
+    margin-bottom:6px;
+}
+
+input,select{
+    width:100%;
+    padding:13px;
+    border:none;
+    border-radius:8px;
+    background:#334155;
+    color:white;
+    font-size:15px;
+}
+
+.diamonds{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-top:10px;
+}
+
+.diamond{
+    padding:15px;
+    background:#334155;
+    border-radius:10px;
+    text-align:center;
+    cursor:pointer;
+    border:2px solid transparent;
+}
+
+.diamond:hover{
+    border-color:#38bdf8;
+}
+
+.diamond.active{
+    border-color:#38bdf8;
+    background:#164e63;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    margin-top:20px;
+    border:none;
+    border-radius:10px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#16a34a;
+}
+
+.summary{
+    margin-top:20px;
+    padding:15px;
+    background:#0f172a;
+    border-radius:10px;
+}
+
+.note{
+    margin-top:15px;
+    font-size:12px;
+    color:#cbd5e1;
+    text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>RanzTopup</h1>
+    <p>PUBG Mobile UC</p>
+</header>
+
+<div class="container">
+
+<div class="card">
+
+<h2>Top Up PUBG Mobile</h2>
+
+<label>PUBG Player ID</label>
+<input type="text" id="playerId" placeholder="Masukkan Player ID">
+
+<label>Pilih UC</label>
+
+<div class="diamonds">
+
+<div class="diamond" onclick="pilihUC(this,'60 UC','Rp15.000')">
+60 UC<br><b>Rp15.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'120 UC','Rp29.000')">
+120 UC<br><b>Rp29.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'180 UC','Rp43.000')">
+180 UC<br><b>Rp43.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'325 UC','Rp75.000')">
+325 UC<br><b>Rp75.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'385 UC','Rp89.000')">
+385 UC<br><b>Rp89.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'660 UC','Rp149.000')">
+660 UC<br><b>Rp149.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'1800 UC','Rp399.000')">
+1800 UC<br><b>Rp399.000</b>
+</div>
+
+<div class="diamond" onclick="pilihUC(this,'3850 UC','Rp799.000')">
+3850 UC<br><b>Rp799.000</b>
+</div>
+
+</div>
+
+<label>Metode Pembayaran</label>
+
+<select id="payment">
+<option value="">-- Pilih Pembayaran --</option>
+<option>QRIS</option>
+<option>DANA</option>
+<option>OVO</option>
+<option>GoPay</option>
+</select>
+
+<div class="summary">
+<b>Pesanan:</b>
+<p id="summary">Belum memilih UC</p>
+</div>
+
+<button onclick="checkout()">Order via WhatsApp</button>
+
+<div class="note">
+⚠️ Jangan pernah memberikan password, PIN, atau OTP akun PUBG.
+</div>
+
+</div>
+</div>
+
+<script>
+
+let selectedUC = "";
+let selectedPrice = "";
+
+function pilihUC(element,uc,price){
+
+    document.querySelectorAll(".diamond").forEach(function(item){
+        item.classList.remove("active");
+    });
+
+    element.classList.add("active");
+
+    selectedUC = uc;
+    selectedPrice = price;
+
+    document.getElementById("summary").innerHTML =
+        uc + " — " + price;
+}
+
+function checkout(){
+
+    const playerId =
+        document.getElementById("playerId").value.trim();
+
+    const payment =
+        document.getElementById("payment").value;
+
+    if(!playerId){
+        alert("Masukkan Player ID terlebih dahulu!");
+        return;
+    }
+
+    if(!selectedUC){
+        alert("Pilih UC terlebih dahulu!");
+        return;
+    }
+
+    if(!payment){
+        alert("Pilih metode pembayaran terlebih dahulu!");
+        return;
+    }
+
+    const nomorAdmin = "6282189782146";
+
+    const pesan =
+        "Halo RanzTopup, saya ingin top up PUBG Mobile%0A%0A" +
+        "Player ID: " + playerId + "%0A" +
+        "UC: " + selectedUC + "%0A" +
+        "Harga: " + selectedPrice + "%0A" +
+        "Pembayaran: " + payment;
+
+    window.open(
+        "https://wa.me/" + nomorAdmin + "?text=" + pesan,
+        "_blank"
+    );
+}
+
+</script>
+
+</body>
+</html>
