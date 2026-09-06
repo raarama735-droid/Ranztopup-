@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RanzTopup - Top Up Game</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
+
+body{
+    background:#070c16;
+    color:white;
+}
+
+header{
+    padding:18px 20px;
+    background:#101827;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:10;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+    color:#00e5ff;
+}
+
+.nav{
+    color:#aeb9ca;
+    font-size:13px;
+}
+
+.hero{
+    padding:65px 20px;
+    text-align:center;
+    background:linear-gradient(135deg,#08111f,#123b5c);
+}
+
+.hero h1{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.hero h1 span{
+    color:#00e5ff;
+}
+
+.hero p{
+    color:#b7c3d4;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 24px;
+    border-radius:9px;
+    background:#00e5ff;
+    color:#001018;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    padding:55px 20px;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.title h2{
+    font-size:29px;
+    margin-bottom:8px;
+}
+
+.title p{
+    color:#8996aa;
+}
+
+.games{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.game{
+    background:#111a2b;
+    border:1px solid #26344a;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    transition:.2s;
+}
+
+.game:hover{
+    transform:translateY(-5px);
+    border-color:#00e5ff;
+}
+
+.icon{
+    width:75px;
+    height:75px;
+    margin:0 auto 15px;
+    border-radius:18px;
+    background:#00e5ff;
+    color:#061018;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:21px;
+    font-weight:bold;
+}
+
+.game h3{
+    margin-bottom:8px;
+}
+
+.game p{
+    color:#8996aa;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+.game a{
+    display:block;
+    padding:12px;
+    background:#00e5ff;
+    color:#001018;
+    border-radius:8px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.features{
+    background:#0d1422;
+}
+
+.feature-box{
+    max-width:900px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+}
+
+.feature{
+    text-align:center;
+    background:#111a2b;
+    padding:25px;
+    border-radius:13px;
+}
+
+.feature h3{
+    margin:10px 0;
+}
+
+.feature p{
+    color:#8996aa;
+    font-size:13px;
+    line-height:1.5;
+}
+
+footer{
+    text-align:center;
+    padding:30px 20px;
+    color:#758298;
+    background:#050912;
+    font-size:13px;
+}
+
+@media(max-width:700px){
+    .games,
+    .feature-box{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">RanzTopup</div>
+    <div class="nav">Top Up Game</div>
+</header>
+
+<div class="hero">
+    <h1>Top Up Game <span>Cepat & Mudah</span></h1>
+
+    <p>
+        Top up game favoritmu dengan mudah,
+        cepat dan praktis di RanzTopup.
+    </p>
+
+    <a href="#game" class="btn">TOP UP SEKARANG</a>
+</div>
+
+<section id="game">
+
+    <div class="title">
+        <h2>🎮 Pilih Game</h2>
+        <p>Pilih game yang ingin kamu top up</p>
+    </div>
+
+    <div class="games">
+
+        <div class="game">
+            <div class="icon">ML</div>
+            <h3>Mobile Legends</h3>
+            <p>Diamond Mobile Legends</p>
+
+            <a href="index.html">
+                Top Up
+            </a>
+        </div>
+
+        <div class="game">
+            <div class="icon">FF</div>
+            <h3>Free Fire</h3>
+            <p>Diamond Free Fire</p>
+
+            <a href="#" onclick="comingSoon();return false;">
+                Top Up
+            </a>
+        </div>
+
+        <div class="game">
+            <div class="icon">PUBG</div>
+            <h3>PUBG Mobile</h3>
+            <p>UC PUBG Mobile</p>
+
+            <a href="#" onclick="comingSoon();return false;">
+                Top Up
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="title">
+        <h2>Kenapa RanzTopup?</h2>
+    </div>
+
+    <div class="feature-box">
+
+        <div class="feature">
+            <div style="font-size:30px">⚡</div>
+            <h3>Proses Cepat</h3>
+            <p>Pesanan diproses dengan cepat setelah pembayaran.</p>
+        </div>
+
+        <div class="feature">
+            <div style="font-size:30px">💰</div>
+            <h3>Harga Terjangkau</h3>
+            <p>Harga top up dibuat terjangkau untuk pemain game.</p>
+        </div>
+
+        <div class="feature">
+            <div style="font-size:30px">🛡️</div>
+            <h3>Aman</h3>
+            <p>Tidak perlu memberikan password atau OTP akun game.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+    <strong>RanzTopup</strong>
+    <br><br>
+    Top Up Game Cepat & Praktis
+    <br><br>
+    © 2026 RanzTopup
+</footer>
+
+<script>
+function comingSoon(){
+    alert("Game ini sedang dalam proses ditambahkan.");
+}
+</script>
+
+</body>
+</html>
