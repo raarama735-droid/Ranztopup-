@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Roblox Robux - RanzTopup</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, sans-serif;
+}
+
+body{
+  background:
+  radial-gradient(circle at top,#172554,#080b16 50%,#05060b);
+  color:white;
+  min-height:100vh;
+}
+
+header{
+  background:rgba(5,7,15,.95);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+
+.navbar{
+  max-width:1100px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+
+.logo{
+  font-size:25px;
+  font-weight:900;
+}
+
+.logo span{
+  color:#00e5ff;
+}
+
+nav{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  padding:8px 11px;
+  border-radius:8px;
+  font-size:13px;
+}
+
+nav a:hover{
+  background:#00e5ff;
+  color:#001018;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:30px 20px 60px;
+}
+
+.hero{
+  min-height:280px;
+  border-radius:22px;
+  padding:30px;
+  display:flex;
+  align-items:flex-end;
+  background:
+  linear-gradient(transparent,rgba(0,0,0,.9)),
+  url("roblox-topup.png") center/cover;
+  border:1px solid rgba(0,229,255,.35);
+  box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:20px;
+  color:#6cefff;
+  background:rgba(0,229,255,.1);
+  border:1px solid rgba(0,229,255,.3);
+  font-size:12px;
+  margin-bottom:10px;
+}
+
+.hero h1{
+  font-size:clamp(38px,8vw,60px);
+}
+
+.hero h1 span{
+  color:#00e5ff;
+}
+
+.hero p{
+  color:#ccd3df;
+  margin-top:10px;
+}
+
+.title{
+  margin:30px 0 15px;
+}
+
+.title h2{
+  font-size:24px;
+}
+
+.title p{
+  color:#8993a5;
+  font-size:13px;
+  margin-top:5px;
+}
+
+.form{
+  background:rgba(15,20,34,.9);
+  border:1px solid rgba(255,255,255,.08);
+  padding:20px;
+  border-radius:17px;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:10px;
+  border:1px solid #30384c;
+  background:#080c16;
+  color:white;
+  outline:none;
+}
+
+input:focus{
+  border-color:#00e5ff;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+}
+
+.card{
+  position:relative;
+  background:rgba(15,20,34,.95);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:20px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:hover{
+  transform:translateY(-4px);
+  border-color:#00e5ff;
+}
+
+.card.selected{
+  border-color:#00e5ff;
+  background:rgba(0,229,255,.08);
+  box-shadow:0 0 20px rgba(0,229,255,.15);
+}
+
+.card h3{
+  font-size:21px;
+  margin-bottom:7px;
+}
+
+.card p{
+  color:#8993a5;
+  font-size:12px;
+  margin-bottom:13px;
+}
+
+.price{
+  color:#00e5ff;
+  font-size:17px;
+  font-weight:bold;
+}
+
+.check{
+  display:none;
+  position:absolute;
+  right:12px;
+  top:12px;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:#00e5ff;
+  color:#001018;
+  text-align:center;
+  line-height:22px;
+  font-weight:bold;
+}
+
+.card.selected .check{
+  display:block;
+}
+
+.order{
+  margin-top:25px;
+  padding:20px;
+  border-radius:17px;
+  background:rgba(15,20,34,.95);
+  border:1px solid rgba(0,229,255,.2);
+}
+
+.row{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:15px;
+  color:#aeb7c7;
+}
+
+.row strong{
+  color:white;
+}
+
+button{
+  width:100%;
+  padding:15px;
+  border:0;
+  border-radius:11px;
+  background:linear-gradient(135deg,#00e5ff,#007bff);
+  color:white;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
+}
+
+.info{
+  margin-top:20px;
+  padding:18px;
+  border-radius:14px;
+  background:rgba(255,255,255,.03);
+  color:#929cad;
+  font-size:13px;
+  line-height:1.7;
+}
+
+footer{
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:25px;
+  color:#737d91;
+  font-size:13px;
+}
+
+footer span{
+  color:#00e5ff;
+}
+
+@media(max-width:700px){
+  .navbar{
+    flex-direction:column;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:430px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="navbar">
+
+    <div class="logo">
+      Ranz<span>Topup</span>
+    </div>
+
+    <nav>
+      <a href="beranda.html">Beranda</a>
+      <a href="index.html">Mobile Legends</a>
+      <a href="free-fire.html">Free Fire</a>
+      <a href="pubg-mobile.html">PUBG Mobile</a>
+    </nav>
+
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+
+    <div>
+      <div class="badge">🎮 ROBLOX TOP UP</div>
+
+      <h1>
+        ROBUX <span>RANZTOPUP</span>
+      </h1>
+
+      <p>
+        Pilih nominal Robux dan pesan langsung
+        melalui WhatsApp.
+      </p>
+    </div>
+
+  </section>
+
+
+  <div class="title">
+    <h2>👤 Username Roblox</h2>
+    <p>Masukkan username Roblox dengan benar.</p>
+  </div>
+
+  <div class="form">
+
+    <label>Username Roblox</label>
+
+    <input
+      type="text"
+      id="username"
+      placeholder="Contoh: RanzGaming123"
+    >
+
+  </div>
+
+
+  <div class="title">
+    <h2>💎 Pilih Nominal Robux</h2>
+    <p>Pilih paket Robux yang ingin kamu pesan.</p>
+  </div>
+
+
+  <div class="grid">
+
+    <div class="card"
+      onclick="pilih(this,'80 Robux','Rp 15.000')">
+      <div class="check">✓</div>
+      <h3>80 Robux</h3>
+      <p>Robux</p>
+      <div class="price">Rp 15.000</div>
+    </div>
+
+
+    <div class="card"
+      onclick="pilih(this,'400 Robux','Rp 65.000')">
+      <div class="check">✓</div>
+      <h3>400 Robux</h3>
+      <p>Robux</p>
+      <div class="price">Rp 65.000</div>
+    </div>
+
+
+    <div class="card"
+      onclick="pilih(this,'800 Robux','Rp 125.000')">
+      <div class="check">✓</div>
+      <h3>800 Robux</h3>
+      <p>Robux</p>
+      <div class="price">Rp 125.000</div>
+    </div>
+
+
+    <div class="card"
+      onclick="pilih(this,'1.700 Robux','Rp 250.000')">
+      <div class="check">✓</div>
+      <h3>1.700 Robux</h3>
+      <p>Robux</p>
+      <div class="price">Rp 250.000</div>
+    </div>
+
+
+    <div class="card"
+      onclick="pilih(this,'4.500 Robux','Rp 625.000')">
+      <div class="check">✓</div>
+      <h3>4.500 Robux</h3>
+      <p>Robux</p>
+      <div class="price">Rp 625.000</div>
+    </div>
+
+
+    <div class="card"
+      onclick="pilih(this,'10.000 Robux','Rp 1.250.000')">
+      <div class="check">✓</div>
+      <h3>10.000 Robux</h3>
+      <p>Robux</p>
+      <div class="price">Rp 1.250.000</div>
+    </div>
+
+  </div>
+
+
+  <div class="order">
+
+    <div class="row">
+      <span>Paket:</span>
+      <strong id="paket">Belum dipilih</strong>
+    </div>
+
+    <div class="row">
+      <span>Harga:</span>
+      <strong id="harga">-</strong>
+    </div>
+
+    <button onclick="pesan()">
+      📱 Pesan via WhatsApp
+    </button>
+
+  </div>
+
+
+  <div class="info">
+
+    <b style="color:white;">📌 Cara pesan</b><br>
+
+    1. Masukkan username Roblox.<br>
+    2. Pilih nominal Robux.<br>
+    3. Tekan tombol Pesan via WhatsApp.<br>
+    4. Konfirmasi pesanan dengan admin.
+
+    <br><br>
+
+    <b style="color:white;">⚠️ Perhatian</b><br>
+
+    Pastikan username Roblox sudah benar sebelum
+    melakukan pemesanan.
+
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 <span>RanzTopup</span> — Roblox Robux
+</footer>
+
+
+<script>
+
+let paket = "";
+let harga = "";
+
+function pilih(element,nama,hargaPaket){
+
+  document.querySelectorAll(".card").forEach(card=>{
+    card.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+
+  paket = nama;
+  harga = hargaPaket;
+
+  document.getElementById("paket").textContent = nama;
+  document.getElementById("harga").textContent = hargaPaket;
+}
+
+
+function pesan(){
+
+  const username =
+    document.getElementById("username").value.trim();
+
+  if(username === ""){
+    alert("Masukkan username Roblox terlebih dahulu.");
+    return;
+  }
+
+  if(paket === ""){
+    alert("Pilih nominal Robux terlebih dahulu.");
+    return;
+  }
+
+  /* GANTI DENGAN NOMOR WHATSAPP KAMU */
+  const nomor = "628XXXXXXXXXX";
+
+  const teks =
+    "Halo RanzTopup 👋%0A%0A" +
+    "Saya ingin pesan Robux.%0A%0A" +
+    "🎮 Game: Roblox%0A" +
+    "👤 Username: " +
+    encodeURIComponent(username) +
+    "%0A" +
+    "💎 Paket: " +
+    encodeURIComponent(paket) +
+    "%0A" +
+    "💰 Harga: " +
+    encodeURIComponent(harga) +
+    "%0A%0A" +
+    "Mohon diproses ya. Terima kasih 🙏";
+
+  window.open(
+    "https://wa.me/" + nomor + "?text=" + teks,
+    "_blank"
+  );
+}
+
+</script>
+
+</body>
+  </html>
