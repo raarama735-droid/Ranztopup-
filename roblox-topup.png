@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up Roblox</title>
+    <style>
+        .banner-container {
+            width: 100%;
+            max-width: 1200px; /* Sesuaikan ukuran maksimal banner */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .banner-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px; /* Membuat sudut gambar melengkung */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <!-- Pastikan file roblox-topup.png berada di folder yang sama dengan file HTML ini -->
+        <img src="roblox-topup.png" alt="Banner Top Up Roblox" class="banner-img">
+    </div>
+
+</body>
+</html>
 
