@@ -1,0 +1,218 @@
+from pathlib import Path
+import zipfile
+
+base = Path("/mnt/data/ucapan-ultah-dini")
+base.mkdir(parents=True, exist_ok=True)
+
+html = r'''<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f5f1">
+  <title>Untuk Dini Syapa'ah — Selamat Ulang Tahun</title>
+  <style>
+    :root {
+      --bg: #f7f5f1;
+      --paper: #fffefa;
+      --ink: #292923;
+      --muted: #77766f;
+      --accent: #9b8068;
+      --line: #e8e2d9;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+    }
+    .page {
+      width: min(100% - 32px, 760px);
+      margin: 0 auto;
+      padding: 28px 0 48px;
+    }
+    .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      color: var(--muted);
+      font: 11px/1.4 Arial, sans-serif;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .hero {
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 54px 0 64px;
+    }
+    .eyebrow {
+      color: var(--accent);
+      font: 12px Arial, sans-serif;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    h1 {
+      font-size: clamp(42px, 10vw, 76px);
+      font-weight: 400;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      margin: 0;
+    }
+    h1 span { color: var(--accent); font-style: italic; }
+    .intro {
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 17px;
+      margin: 25px 0 30px;
+    }
+    button {
+      border: 1px solid var(--accent);
+      background: transparent;
+      color: var(--ink);
+      padding: 13px 20px;
+      border-radius: 2px;
+      font: 12px Arial, sans-serif;
+      letter-spacing: .08em;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    button:hover, button:focus-visible {
+      background: var(--accent);
+      color: white;
+      outline: none;
+    }
+    .rule { height: 1px; background: var(--line); width: 100%; }
+    .letter {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      padding: clamp(24px, 6vw, 54px);
+      margin: 0 0 28px;
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .letter.show { opacity: 1; transform: translateY(0); }
+    .letter-label {
+      color: var(--accent);
+      font: 11px Arial, sans-serif;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .letter h2 {
+      font-size: clamp(25px, 6vw, 36px);
+      font-weight: 400;
+      line-height: 1.25;
+      margin: 0 0 24px;
+    }
+    .letter p { margin: 0 0 18px; font-size: 16px; }
+    .signature { margin-top: 32px; color: var(--accent); font-style: italic; }
+    .closing {
+      text-align: center;
+      padding: 52px 8px 20px;
+    }
+    .closing .star { color: var(--accent); font-size: 22px; }
+    .closing p { color: var(--muted); font-size: 14px; }
+    footer {
+      text-align: center;
+      color: #9a978f;
+      font: 10px Arial, sans-serif;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding-top: 30px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; }
+    }
+    @media (max-width: 480px) {
+      .page { width: min(100% - 28px, 760px); }
+      .hero { min-height: 72vh; }
+      .intro { font-size: 16px; }
+      .letter p { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">
+      <span>Sebuah pesan kecil</span>
+      <span>Hari yang istimewa</span>
+    </div>
+
+    <section class="hero" aria-labelledby="main-title">
+      <div class="eyebrow">Untuk seseorang yang pernah berarti</div>
+      <h1 id="main-title">Selamat<br>ulang tahun,<br><span>Dini.</span></h1>
+      <p class="intro">Di hari spesialmu, ada beberapa kata sederhana yang ingin kusampaikan. Tidak perlu terburu-buru, bacalah saat kamu punya waktu.</p>
+      <button id="openLetter" type="button">Buka pesan →</button>
+    </section>
+
+    <div class="rule"></div>
+
+    <section class="letter" id="letter" aria-label="Surat ulang tahun">
+      <div class="letter-label">Dengan tulus</div>
+      <h2>Untuk Dini Syapa'ah,</h2>
+      <p>Selamat bertambah usia. Semoga di umur yang baru ini, hal-hal baik semakin dekat denganmu. Semoga kesehatan, ketenangan, kebahagiaan, dan kemudahan selalu menyertai setiap langkahmu.</p>
+      <p>Aku berharap kamu bisa terus tumbuh menjadi pribadi yang kamu banggakan. Semoga apa pun yang sedang kamu usahakan perlahan menemukan jalannya, dan semoga hari-harimu dipenuhi alasan untuk bersyukur.</p>
+      <p>Aku juga ingin meminta maaf jika selama ini ada perkataan atau sikapku yang pernah membuatmu kecewa. Aku tidak menuliskan ini untuk meminta apa pun atau mengubah keadaan. Aku hanya ingin menyampaikan doa baik di hari spesialmu.</p>
+      <p>Terima kasih untuk hal-hal baik dan kenangan yang pernah ada. Apa pun jalan yang kita pilih masing-masing, aku tetap berharap kamu mendapatkan yang terbaik.</p>
+      <p class="signature">Sekali lagi, selamat ulang tahun, Dini.<br>Semoga bahagia selalu.</p>
+    </section>
+
+    <section class="closing">
+      <div class="star">✦</div>
+      <p>Semoga tahun ini memperlakukanmu dengan baik.</p>
+    </section>
+
+    <footer>Dibuat dengan niat baik · Untuk Dini Syapa'ah</footer>
+  </main>
+
+  <script>
+    const button = document.getElementById("openLetter");
+    const letter = document.getElementById("letter");
+
+    button.addEventListener("click", () => {
+      letter.classList.add("show");
+      button.textContent = "Pesan terbuka ✓";
+      button.disabled = true;
+      letter.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  </script>
+</body>
+</html>
+'''
+
+(base / "index.html").write_text(html, encoding="utf-8")
+readme = """WEBSITE UCAPAN ULANG TAHUN — DINI SYAPA'AH
+
+Isi:
+- index.html: website lengkap (HTML, CSS, JavaScript dalam satu file)
+
+Cara pakai:
+1. Ekstrak ZIP.
+2. Buka index.html di browser untuk melihat hasilnya.
+3. Untuk mengunggah, letakkan index.html di folder utama (root) hosting atau repository GitHub Pages.
+4. Setelah hosting aktif, bagikan URL website tersebut.
+
+Kustomisasi:
+- Ubah teks ucapan langsung di bagian <section class="letter"> pada index.html.
+- Ubah judul/tab browser pada tag <title>.
+- Website tidak membutuhkan library, server, atau database.
+"""
+(base / "README.txt").write_text(readme, encoding="utf-8")
+
+zip_path = Path("/mnt/data/website-ultah-dini.zip")
+with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
+    z.write(base / "index.html", "index.html")
+    z.write(base / "README.txt", "README.txt")
+
+print(f"ZIP: {zip_path}")
+print(f"HTML: {base / 'index.html'}")
